@@ -1,0 +1,263 @@
+:root {
+    --banner-h1-color: #ede0be;
+    --background-color: #f9f9f9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/*
+    General
+ */
+
+h1 {
+    font-family: "Rubik", serif;
+    font-size: 3vw;
+    margin-bottom: 4px;
+}
+
+p {
+    font-family: "Montserrat", serif;
+    font-size: 1.5vw;
+}
+
+.footer { /* todo */
+    height: 50px;
+    margin-top: -0.7vw;
+    font-size: 0.5vw;
+}
+
+.section {
+    background-color: #f9f9f9;
+    padding: 48px;
+    margin-bottom: 4vh;
+}
+
+/*
+    Background Image
+ */
+
+.background {
+    /* https://css-tricks.com/perfect-full-page-background-image/ */
+    background: url(../resources/banner.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/*
+    Banner
+ */
+
+.banner {
+    height: 100vh;
+}
+
+.banner > img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner > h1{
+    font-family: 'Permanent Marker', serif;
+    font-size: 10vw;
+    letter-spacing: 4px;
+    color: var(--banner-h1-color);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-shadow: 0 0 25px rgba(0,0,0,0.75);
+
+    animation: fade-in 2s;
+}
+
+.arrow-up {
+    width: 2vw;
+    height: auto;
+
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    transition: top 0.5s ease-in-out;
+
+    /* color generator: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(100%) sepia(1%) saturate(158%) hue-rotate(232deg) brightness(114%) contrast(95%);
+    -webkit-filter: invert(100%) sepia(1%) saturate(158%) hue-rotate(232deg) brightness(114%) contrast(95%);
+}
+
+.arrow-up:hover {
+    top: 98%;
+
+    /* color generator: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(93%) sepia(12%) saturate(537%) hue-rotate(355deg) brightness(94%) contrast(97%);
+    -webkit-filter: invert(93%) sepia(12%) saturate(537%) hue-rotate(355deg) brightness(94%) contrast(97%);
+}
+
+/*
+    Introduction
+ */
+
+#introduction {
+    height: 100vh;
+    background-color: var(--background-color);
+    -webkit-box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
+    box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
+}
+
+/*
+    Social Media
+ */
+
+#social-media {
+    display: flex;
+    justify-content: center;
+}
+
+#social-media > a > img {
+    margin: 0 70px 0 70px;
+    width: 4.5vw;
+    height: auto;
+    align-items: center;
+
+    transition: transform 0.5s ease-in;
+}
+
+#social-media > a > img:hover[alt=Twitter] {
+    filter: invert(65%) sepia(49%) saturate(4341%) hue-rotate(181deg) brightness(97%) contrast(97%);
+    animation: idle-twitter 3s 0s infinite;
+}
+
+#social-media > a > img:hover[alt=Github] {
+    filter: invert(15%) sepia(0%) saturate(1%) hue-rotate(30deg) brightness(95%) contrast(85%);
+    animation: idle-github 1s 0s infinite;
+}
+
+#social-media > a > img:hover[alt=Youtube] {
+    filter: invert(32%) sepia(43%) saturate(2540%) hue-rotate(335deg) brightness(95%) contrast(103%);
+    animation: idle-youtube 4s infinite;
+}
+
+/*
+    Projects
+ */
+
+#projects {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+}
+
+.project {
+    background-color: var(--background-color);
+
+    padding: 10px;
+    margin: 20px;
+
+    position: relative;
+}
+
+.project.active:hover {
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
+    transition: 0.7s ease-in-out;
+}
+
+.project.preview {
+    background-color: transparent;
+
+    width: 20vw;
+    height: auto;
+    /*
+    -webkit-box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
+    box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
+     */
+}
+
+.project.blur {
+    filter: blur(5px);
+    transition: 0.5s ease-in-out;
+}
+
+.project.blur:hover {
+    filter: blur(1px);
+}
+
+.project.logo {
+    background-color: transparent;
+    font-size: 2vw;
+}
+
+/*
+    Animations
+ */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -65%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes idle-youtube {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    30% {
+        transform: translate(14%, -10%) rotateZ(105deg);
+    }
+    56% {
+        transform: translate(-50%, -30%) rotateZ(-40deg);
+    }
+    76% {
+        transform: translate(20%, -42.3%);
+    }
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes idle-github {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes idle-twitter {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(-40deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    70% {
+        transform: rotate(-50deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
