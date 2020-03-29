@@ -1,17 +1,58 @@
+/*
+MIT License
+
+Copyright (c) 2020 XroixHD
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ */
+
 :root {
     --banner-h1-color: #ede0be;
-    --background-color: #f9f9f9;
+    --white: #f9f9f9;
+    --black: #202326;
+    --black-text: #202326;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    color: var(--black-text);
 }
 
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: #202326;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9FA2A6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5d61;
 }
 
 /*
@@ -20,13 +61,13 @@ html {
 
 h1 {
     font-family: "Rubik", serif;
-    font-size: 3vw;
-    margin-bottom: 4px;
+    font-size: 3em;
+    margin-bottom: 0.20em;
 }
 
 p {
     font-family: "Montserrat", serif;
-    font-size: 1.5vw;
+    font-size: 1.5em;
 }
 
 .footer { /* todo */
@@ -36,7 +77,6 @@ p {
 }
 
 .section {
-    background-color: #f9f9f9;
     padding: 48px;
     margin-bottom: 4vh;
 }
@@ -45,13 +85,16 @@ p {
     Background Image
  */
 
-.background {
+.container {
     /* https://css-tricks.com/perfect-full-page-background-image/ */
     background: url(../resources/banner.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    position: relative;
+    z-index: 0;
 }
 
 /*
@@ -62,23 +105,21 @@ p {
     height: 100vh;
 }
 
-.banner > img {
-    width: 100%;
-    height: 100%;
-}
-
-.banner > h1{
+.banner > a > h1{
     font-family: 'Permanent Marker', serif;
+    /* More Modern, maybe some time later xd font-family: 'IBM Plex Mono', monospace; */
+
+
     font-size: 10vw;
     letter-spacing: 4px;
     color: var(--banner-h1-color);
+    text-shadow: 0 0 25px rgba(0,0,0,0.75);
 
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    text-shadow: 0 0 25px rgba(0,0,0,0.75);
+    z-index: -1;
 
     animation: fade-in 2s;
 }
@@ -88,9 +129,10 @@ p {
     height: auto;
 
     position: absolute;
-    top: 99%;
+    top: 53.5%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    z-index: 1000;
+
     transition: top 0.5s ease-in-out;
 
     /* color generator: https://codepen.io/sosuke/pen/Pjoqqp */
@@ -99,7 +141,7 @@ p {
 }
 
 .arrow-up:hover {
-    top: 98%;
+    top: 53%;
 
     /* color generator: https://codepen.io/sosuke/pen/Pjoqqp */
     filter: invert(93%) sepia(12%) saturate(537%) hue-rotate(355deg) brightness(94%) contrast(97%);
@@ -111,11 +153,11 @@ p {
  */
 
 #introduction {
-    height: 100vh;
-    background-color: var(--background-color);
-    -webkit-box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
-    box-shadow: 0 6px 22px 6px rgba(0,0,0,0.75);
+    height: 80vh;
+    background-color: var(--white);
+    -webkit-box-shadow: 0 6px 22px 6px rgba(16, 8, 8, 0.75);
+    -moz-box-shadow: 0 6px 22px 6px rgba(16, 8, 8, 0.75);
+    box-shadow: 0 6px 22px 6px rgba(16, 8, 8, 0.75);
 }
 
 /*
@@ -128,12 +170,13 @@ p {
 }
 
 #social-media > a > img {
-    margin: 0 70px 0 70px;
-    width: 4.5vw;
+    margin: 0 6.5vw 0 6.5vw;
+    width: 6em;
     height: auto;
     align-items: center;
 
     transition: transform 0.5s ease-in;
+    filter: invert(10%) sepia(8%) saturate(820%) hue-rotate(169deg) brightness(94%) contrast(90%);
 }
 
 #social-media > a > img:hover[alt=Twitter] {
@@ -156,56 +199,114 @@ p {
  */
 
 #projects {
-    background-color: #ffffff;
+    background-color: var(--white);
+    border-top: 4px solid var(--black);
+
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 4em;
 }
 
-.project {
-    background-color: var(--background-color);
+.project{
+    background-color: var(--black);
+    color: #f9f9f9;
+    text-align: center;
 
     padding: 10px;
     margin: 20px;
+    border-radius: 25px;
 
     position: relative;
+
+    -webkit-box-shadow: 0 1px 3px -2px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0 1px 3px -2px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    transition: 0.2s ease;
 }
 
-.project.active:hover {
-    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
-    box-shadow: 0 0 6px 0 rgba(0,0,0,0.75);
-    transition: 0.7s ease-in-out;
+.project:hover > * {
+    -webkit-box-shadow: 0 10px 13px -7px #483736, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0 10px 13px -7px rgba(255, 208, 189, 0.13), 5px 5px 15px 5px rgba(0,0,0,0);
+    transition: 0.2s ease;
+
+    cursor: pointer;
 }
 
 .project.preview {
     background-color: transparent;
 
-    width: 20vw;
+    width: 25em;
     height: auto;
-    /*
-    -webkit-box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
-    box-shadow: inset 0 6px 22px 6px rgba(0,0,0,0.75);
-     */
-}
-
-.project.blur {
-    filter: blur(5px);
-    transition: 0.5s ease-in-out;
-}
-
-.project.blur:hover {
-    filter: blur(1px);
 }
 
 .project.logo {
     background-color: transparent;
-    font-size: 2vw;
+    font-size: 3em;
+    border-radius: 10px;
+}
+
+/*
+    Footer
+ */
+
+#footer {
+    background-color: var(--white);
+    border-top: 4px solid var(--black);
+    display: flex;
+    padding: 1em 1em 1em 48px;
+}
+
+#dark-mode {
+    padding: 6px 26px 6px 26px;
+    border: 4px solid #202326;
+
+    font-family: "Montserrat", serif;
+    font-size: 1em;
+
+    transition: 0.2s ease;
+
+    background-color: #f9f9f9;
+    color: var(--black);
+}
+
+#dark-mode:hover {
+    background-color: #202326;
+    color: #f9f9f9;
+    transition: 0.2s ease;
+
+    cursor: pointer;
+}
+
+#dark-mode.active {
+    padding: 6px 26px 6px 26px;
+    background-color: #202326;
+    border: 4px solid #202326;
+
+    color: #f9f9f9;
+    font-family: "Montserrat", serif;
+    font-size: 1em;
+
+    transition: 0.2s ease;
+}
+
+#dark-mode.active:hover {
+    background-color: #f9f9f9;
+    color: var(--black);
+    transition: 0.2s ease;
+}
+
+#dark-mode:focus {
+    outline: none;
+}
+
+#copyright {
+    margin-left: auto;
 }
 
 /*
     Animations
  */
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -261,3 +362,8 @@ p {
         transform: rotate(360deg);
     }
 }
+
+/*
+    Media Query
+ */
+

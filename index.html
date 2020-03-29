@@ -1,3 +1,26 @@
+<!--
+MIT License
+
+Copyright (c) 2020 XroixHD
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,61 +34,66 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Rubik&display=swap" rel="stylesheet">
+    <!-- link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i&display=swap" rel="stylesheet"-->
 </head>
 
 <body>
-    <div class="background">
+    <noscript>
+        <h1>Oh no! Please activate Javascript 😢 </h1>
+        <p>
+            Sadly xroix.me needs Javascript to work properly...
+        </p>
+    </noscript>
+    <div class="container">
         <!-- Banner -->
         <div class="banner">
-            <h1>XroixHD</h1>
-            <footer>
-                <a href="#introduction" >
-                    <img class="arrow-up" src="resources/icons/arrow-up.png" alt="">
-                </a>
-            </footer>
+            <a href="#introduction">
+                <h1>XroixHD</h1>
+            </a>
+            <a href="#introduction" >
+                <img class="arrow-up" src="resources/icons/arrow-up.png" alt="">
+            </a>
         </div>
 
-        <!-- Introduction -->
+        <!-- Introduction (= Overlay) -->
         <section id="introduction">
+
             <div class="section">
                 <h1>Just one click away</h1>
-                <p>and discover my Projects or follow me on Github to get notified for new stuff!</p>
+                <p>and discover some of my Projects or even follow me to get up to date!</p>
             </div>
 
             <!-- Social Media -->
             <div class="section" id="social-media">
                 <a href="https://twitter.com/XroixHD" target="_blank">
-                    <img src="resources/icons/twitter.png" alt="Twitter">
+                    <img src="resources/icons/twitter.svg" alt="Twitter">
                 </a>
                 <a href="https://github.com/XroixHD" target="_blank">
-                    <img src="resources/icons/github.png" alt="Github">
+                    <img src="resources/icons/github.svg" alt="Github">
                 </a>
                 <a href="https://www.youtube.com/channel/UC4dNeoE7POOYMelEV8w-zQg" target="_blank">
-                    <img src="resources/icons/youtube.png" alt="Youtube">
+                    <img src="resources/icons/youtube.svg" alt="Youtube">
                 </a>
             </div>
+
             <!-- Projects -->
             <div id="projects">
-                <div class="project blur">
-                    <p class="project logo">Cubameter</p>
-                    <img class="project preview" src="resources/projects/preview-cubameter.png" alt="Cubetastic game!">
-                </div>
-                <div class="project active">
-                    <p class="project logo">Cubameter</p>
-                    <img class="project preview" src="resources/projects/preview-cubameter.png" alt="Cubetastic game!">
-                </div>
-                <div class="project blur">
-                    <p class="project logo">Cubameter</p>
-                    <img class="project preview" src="resources/projects/preview-cubameter.png" alt="Cubetastic game!">
-                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div id="footer">
+                <button id="dark-mode" class="">
+                    Light Mode ☀️
+                </button>
+                <p>Beta</p>
+                <p id="copyright">Copyright 2020 XroixHD</p>
             </div>
         </section>
     </div>
-    <!-- footer class="footer">
-        <p>XroixHD</p>
-    </footer -->
 
     <!-- Scripts -->
     <script src="js/projects.js"></script>
+    <script src="js/dark-mode.js"></script>
 </body>
 </html>
